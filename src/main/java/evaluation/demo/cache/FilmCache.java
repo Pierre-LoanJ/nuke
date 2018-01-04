@@ -1,19 +1,19 @@
-package evaluation.demo;
+package evaluation.demo.cache;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Film {
+public class FilmCache {
 
     private String id;
     private String title;
-    private String description;
+    //private String description;
     private String director;
     private String producer;
     private String release_date;
     private String rt_score;
     
-    public Film() {
+    public FilmCache() {
     }
 
     public String getId() {
@@ -30,7 +30,7 @@ public class Film {
     public void setTitle(String title) {
         this.title = title;
     }
-
+/*
 	public String getDescription() {
 		return description;
 	}
@@ -38,7 +38,7 @@ public class Film {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+*/
 	public String getDirector() {
 		return director;
 	}

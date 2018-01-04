@@ -1,22 +1,23 @@
 package evaluation.demo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class Favourite {
-	private static List<Film> favourites = new ArrayList<Film>();		// mock of the DB
+import evaluation.demo.cache.FilmCache;
 
-	public static List<Film> getFavourites() {
+public class Favourite {
+	private static List<FilmCache> favourites = new ArrayList<FilmCache>();		// mock of the DB
+
+	public static List<FilmCache> getFavourites() {
 		return favourites;
 	}
 
-	public void setFavourites(List<Film> favourites) {
+	public void setFavourites(List<FilmCache> favourites) {
 		this.favourites = favourites;
 	}
 	
-	public static Film getFavourite(String id) throws FilmDoesNotExistException {
-		for (Film film : favourites) {
+	public static FilmCache getFavourite(String id) throws FilmDoesNotExistException {
+		for (FilmCache film : favourites) {
 			if (film.getId().equals(id)) {
 				return film;
 			}
@@ -24,7 +25,7 @@ public class Favourite {
 		throw new FilmDoesNotExistException();
 	}
 
-	public static void addFavourite(Film film) {
+	public static void addFavourite(FilmCache film) {
 		favourites.add(film);
 	}
 	public static String delete(String id) throws FilmDoesNotExistException {
