@@ -1,12 +1,13 @@
 package evaluation.demo;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class Favourite {
-	private List<Film> favourites;
+	private static List<Film> favourites = new ArrayList<Film>();		// mock of the DB
 
-	public List<Film> getFavourites() {
+	public static List<Film> getFavourites() {
 		return favourites;
 	}
 
@@ -14,20 +15,22 @@ public class Favourite {
 		this.favourites = favourites;
 	}
 	
-	public Film getFilmFromFavourite(String id) throws FilmDoesNotExistException {
+	public static Film getFavourite(String id) throws FilmDoesNotExistException {
 		for (Film film : favourites) {
-			if (film.getId() == id) return film;
+			if (film.getId().equals(id)) {
+				return film;
+			}
 		}
 		throw new FilmDoesNotExistException();
 	}
 
-	public void add(Film film) {
+	public static void addFavourite(Film film) {
 		favourites.add(film);
 	}
-	public void delete(String id) throws FilmDoesNotExistException {
-		boolean removed = favourites.removeIf(p -> (p.getId() == id));
-		
-		if (!removed) throw new FilmDoesNotExistException();
+	public static String delete(String id) throws FilmDoesNotExistException {
+		boolean removed = favourites.removeIf(p -> (p.getId().equals(id)));
+		if (!removed) return "not found";//throw new FilmDoesNotExistException();
+		else return "ok deletion";
 	}
 	
 }
